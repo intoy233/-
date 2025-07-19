@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站部署指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 { color: #667eea; text-align: center; }
+        h2 { color: #333; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        .method {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+        .step {
+            background: #e3f2fd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+        .code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 5px;
+        }
+        .btn:hover { background: #5a6fd8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 智能交互平台部署指南</h1>
+        
+        <div class="success">
+            <strong>恭喜！</strong> 您的网站已经准备好部署了。选择下面任一方法即可让全世界访问您的网站。
+        </div>
+
+        <h2>方法一：Vercel 部署（推荐）</h2>
+        <div class="method">
+            <h3>步骤 1：登录 Vercel</h3>
+            <div class="step">
+                1. 访问 <a href="https://vercel.com" target="_blank" class="btn">Vercel.com</a><br>
+                2. 点击 "Sign Up" 或 "Login"<br>
+                3. 使用 GitHub、GitLab 或 Email 登录
+            </div>
+
+            <h3>步骤 2：部署网站</h3>
+            <div class="step">
+                <strong>方式 A：拖拽部署（最简单）</strong><br>
+                1. 登录后点击 "Add New..." → "Project"<br>
+                2. 选择 "Browse All Templates" 下方的 "Deploy a new project"<br>
+                3. 将整个 UI 文件夹拖拽到上传区域<br>
+                4. 等待部署完成（约1-2分钟）
+            </div>
+
+            <div class="step">
+                <strong>方式 B：命令行部署</strong><br>
+                在项目文件夹中打开命令行，运行：
+                <div class="code">
+vercel login<br>
+vercel --prod
+                </div>
+            </div>
+        </div>
+
+        <h2>方法二：Netlify 部署</h2>
+        <div class="method">
+            <div class="step">
+                1. 访问 <a href="https://netlify.com" target="_blank" class="btn">Netlify.com</a><br>
+                2. 注册/登录账户<br>
+                3. 将整个 UI 文件夹拖拽到 "Deploy" 区域<br>
+                4. 等待部署完成
+            </div>
+        </div>
+
+        <h2>方法三：GitHub Pages</h2>
+        <div class="method">
+            <div class="step">
+                1. 在 GitHub 创建新仓库<br>
+                2. 上传所有文件到仓库<br>
+                3. 在仓库设置中启用 GitHub Pages<br>
+                4. 选择 main 分支作为源
+            </div>
+        </div>
+
+        <h2>⚠️ 部署后必须配置</h2>
+        <div class="warning">
+            <strong>重要：</strong>部署完成后，您需要更新 Supabase 配置：
+            <ol>
+                <li>登录 <a href="https://supabase.com" target="_blank">Supabase 控制台</a></li>
+                <li>进入您的项目 → Authentication → Settings</li>
+                <li>在 "Site URL" 中填入您的新域名</li>
+                <li>在 "Redirect URLs" 中添加：
+                    <div class="code">
+https://your-domain.com/auth.html<br>
+https://your-domain.com/
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <h2>🎉 部署完成后</h2>
+        <div class="success">
+            <strong>测试清单：</strong>
+            <ul>
+                <li>✅ 网站能正常加载</li>
+                <li>✅ 用户注册功能正常</li>
+                <li>✅ 用户登录功能正常</li>
+                <li>✅ 密码重置功能正常</li>
+                <li>✅ 在手机上显示正常</li>
+            </ul>
+        </div>
+
+        <h2>📱 获取访问链接</h2>
+        <div class="step">
+            部署完成后，您将获得一个类似这样的链接：
+            <div class="code">
+https://your-project-name.vercel.app<br>
+https://your-project-name.netlify.app<br>
+https://username.github.io/repository-name
+            </div>
+            将此链接分享给任何人，他们都可以访问您的网站！
+        </div>
+
+        <div class="warning">
+            <strong>提示：</strong>如果遇到问题，请检查浏览器控制台的错误信息，通常是 Supabase 配置问题。
+        </div>
+    </div>
+</body>
+</html>
